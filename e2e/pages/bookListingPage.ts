@@ -2,7 +2,7 @@ import { Page } from "playwright-core";
 import { expect } from "@playwright/test";
 import { locators } from "../locators/locators";
 
-export default class bookListingPage {
+export default class BookListingPage {
   readonly page: Page;
 
   constructor(page: Page) {
@@ -10,7 +10,6 @@ export default class bookListingPage {
   }
 
   async addBookToCart(page: Page) {
-    await expect(
-      page.getByRole('button', { name: 'Book Cart' })).toBeVisible();
+    await expect(page.locator(locators.ADD_TO_CART_BUTTON)).toBeVisible();
   }
 }
