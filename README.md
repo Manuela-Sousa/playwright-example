@@ -10,7 +10,7 @@ This repository follows a modular folder structure to organize test-related file
   
 - **`e2e/locators/`**: Contains locator files. All web element locators for various pages of the application should be defined here.
 
-- **`e2e/pages/`**: Contains Page Object classes. Each class represents a different page in the application, encapsulating the web elements and actions (methods) that interact with them.
+- **`e2e/pages/`**: Contains Page Object classes. Each class represents a different page in the application, encapsulating the actions (methods).
 
 - **`e2e/tests/specs/`**: Contains test specification files. Each file includes test cases that use the Page Object classes and locators defined in other directories.
 
