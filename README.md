@@ -1,89 +1,51 @@
-# Ready to use Playwright project # 
+# Playwright Test Automation Project
 
-This is a ready to use test automation playwright project to help you start.
+This is a ready-to-use test automation project built with **Playwright** to help you quickly get started with end-to-end testing.
 
-## Organization of the project
+## Project Structure
 
-#### This repository is organized into different folders:
+This repository follows a modular folder structure to organize test-related files and improve maintainability:
 
-* e2e - **env:**  in this folder we have the environments files. For each environment we should have a different file.
+- **`e2e/env/`**: Environment configuration files. Each environment (e.g., `local`, `staging`, `production`) should have its own file in this directory.
   
-* e2e - **locators:** in this folder we have the locators file. All the web elements should be stored in this file.
+- **`e2e/locators/`**: Contains locator files. All web element locators for various pages of the application should be defined here.
 
-* e2e - **pages:** in this folder we have the page objects. Each page object will have methods and properties that represent the page’s elements and actions.
+- **`e2e/pages/`**: Contains Page Object classes. Each class represents a different page in the application, encapsulating the web elements and actions (methods) that interact with them.
 
-* e2e - **tests - specs:** in this folder we have all the tests files.
+- **`e2e/tests/specs/`**: Contains test specification files. Each file includes test cases that use the Page Object classes and locators defined in other directories.
 
-#### Configuring test environment to be executed on the project
+## Setting Up the Test Environment
 
-In the **playwright.config.ts** file in this code line  **process.env.ENV = process.env.ENV || 'local';** you specify the environment where you want to execute your tests. 
+You can configure the test environment in the `playwright.config.ts` file. Specifically, in the following line:
 
-## Design Patterns used in this project and their explanation
+
+**process.env.ENV = process.env.ENV || 'local';**
+
+This sets the environment for running tests. You can change the value of `process.env.ENV` to point to a different environment (e.g., `staging`, `production`) as needed.
+ts
+
+## Design Patterns Used
 
 ### Page Object Pattern
 
-**Page Object Pattern** is used to **improve** test automation **maintenance** and **reducing** code duplication and it is applied to this project in pages folder. The classes inside pages folder represent the locators for web elements of each different page from the website used for tests and their separation from tests that are in tests folder.  
-The **custom Page Object Pattern** says that actions associate with **features** and with **page objects** should also be in this classes along with locators. Due to the **violation** of **Single Reponsability Principle** that states that classes can only have one reason to change, regarding the **SOLID principles** of object oriented programming language, in this project each group of actions associated with the features and with page objects, are in a in pages folder and locators are in the locators folder.
+The **Page Object Pattern** is used in this project to enhance maintainability and reduce code duplication in test scripts.
 
-### To Run
+- **Page Object Classes**: The classes in the `e2e/pages/` directory represent the web elements and actions associated with each page of the application. This separation allows for better organization and easier maintenance of your tests.
 
-You can execute the tests of this project from the Visual Studio code plugin or you can execute from the command line using:
+- **Custom Page Object Pattern**: This project follows a **Custom Page Object Pattern**, where actions related to specific features (such as form submissions, navigation, etc.) are included within the Page Object classes, along with the locators.
 
-**Run all the tests**
+- **Separation of Concerns**: To align with **SOLID principles** (specifically the **Single Responsibility Principle**), we avoid combining all actions within the same class as the locators. Instead, actions are grouped in the Page Object classes based on the related feature or page, and locators are stored separately in the `locators/` folder.
 
-npx playwright test
+## Running Tests
 
+You can run the tests either through Visual Studio Code or the command line. Below are some useful commands:
 
-**Run a single test file**
+### Run All Tests
+To run all the tests in the project:
 
-npx playwright test tests/todo-page.spec.ts
+**npx playwright test**
 
+### Run a single test file
+To run a single test file:
 
-**Run a set of test files**
-
-npx playwright test tests/todo-page/ tests/landing-page/
-
-
-**Run files that have my-spec or my-spec-2 in the file name**
-
-npx playwright test my-spec my-spec-2
-
-
-**Run tests that are in line 42 in my-spec.ts**
-
-npx playwright test my-spec.ts:42
-
-
-**Run the test with the title**
-
-npx playwright test -g "add a todo item"
-
-
-**Run tests in headed browsers**
-
-npx playwright test --headed
-
-
-**Run all the tests against a specific project**
-
-npx playwright test --project=chromium
-
-
-**Disable parallelization**
-
-npx playwright test --workers=1
-
-
-**Choose a reporter**
-
-npx playwright test --reporter=dot
-
-
-**Run in debug mode with Playwright Inspector**
-
-npx playwright test --debug
-
-
-**Run tests in interactive UI mode, with a built-in watch mode (Preview)**
-
-npx playwright test --ui
+**npx playwright test e2e/tests/shoppingCart.spec.ts**
