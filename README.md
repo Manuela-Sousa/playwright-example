@@ -30,9 +30,7 @@ ts
 
 The **Page Object Pattern** is used in this project to enhance maintainability and reduce code duplication in test scripts.
 
-- **Page Object Classes**: The classes in the `e2e/pages/` directory represent the web elements and actions associated with each page of the application. This separation allows for better organization and easier maintenance of your tests.
-
-- **Custom Page Object Pattern**: This project follows a **Custom Page Object Pattern**, where actions related to specific features (such as form submissions, navigation, etc.) are included within the Page Object classes, along with the locators.
+- **Page Object Classes**: The classes in the `e2e/pages/` directory represent the actions associated with each page of the application. This separation allows for better organization and easier maintenance of your tests.
 
 - **Separation of Concerns**: To align with **SOLID principles** (specifically the **Single Responsibility Principle**), we avoid combining all actions within the same class as the locators. Instead, actions are grouped in the Page Object classes based on the related feature or page, and locators are stored separately in the `locators/` folder.
 
