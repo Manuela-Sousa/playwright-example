@@ -11,5 +11,8 @@ export default class BookListingPage {
 
   async addBookToCart(page: Page) {
     await expect(page.locator(locators.ADD_TO_CART_BUTTON)).toBeVisible();
+    await page.locator(locators.ADD_TO_CART_BUTTON).click();
+    await page.locator(locators.MINI_CART_BUTTON).click();
+    await expect(page.locator(locators.BOOK_ADDED_TO_CART_IMAGE)).toBeVisible();
   }
 }
