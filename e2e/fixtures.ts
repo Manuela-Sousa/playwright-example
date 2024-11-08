@@ -1,13 +1,19 @@
 import { test as base } from "@playwright/test";
-import genericPage from "./pages/GenericPage";
+import BasePage from "./pages/BasePage";
+import ShoppingCartPage from "./pages/ShoppingCartPage";
 
 type MyFixtures = {
-  genericPage: genericPage;
+  basePage: BasePage;
+  shoppingCartPage: ShoppingCartPage;
 };
 
 export const test = base.extend<MyFixtures>({
-  genericPage: async ({ page }, use) => {
-    await use(new genericPage(page));
+  basePage: async ({ page }, use) => {
+    await use(new BasePage(page));
+  },
+  shoppingCartPage: async ({ page }, use) => {
+    await use(new ShoppingCartPage(page));
   },
 });
+
 export { expect } from "@playwright/test";

@@ -1,14 +1,14 @@
 import { Locator, Page } from "playwright-core";
 import { expect } from "@playwright/test";
 
-export default class GenericPage {
-  readonly page: Page;
+export default class BasePage {
+  page: Page;
 
   constructor(page: Page) {
     this.page = page;
   }
 
-  private getLocator(selector: string | Locator): Locator {
+  getLocator(selector: string | Locator): Locator {
     if (typeof selector === "string") {
       return this.page.locator(selector);
     }
@@ -20,6 +20,8 @@ export default class GenericPage {
     timeout: number = 5000
   ): Promise<void> {
     const locator = this.getLocator(selector);
+
+    await locator.waitFor({ state: "visible", timeout });
 
     await expect(locator).toBeVisible({ timeout });
   }
