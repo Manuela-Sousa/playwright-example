@@ -41,9 +41,9 @@ You can run the tests either through Visual Studio Code or the command line. Bel
 ### Run All Tests
 To run all the tests in the project:
 
-**npx playwright test**
+- **`npx playwright test/`**
 
 ### Run a single test file
 To run a single test file:
 
-**npx playwright test e2e/tests/shoppingCart.spec.ts**
+- **`npx playwright test e2e/tests/shoppingCart.spec.ts/`**
