@@ -7,4 +7,5 @@ test("Should be able to add and view book in the cart", async ({
   shoppingCartPage,
 }) => {
   await shoppingCartPage.addBookToShoppingCart();
+  await shoppingCartPage.isBookInCart();
 });

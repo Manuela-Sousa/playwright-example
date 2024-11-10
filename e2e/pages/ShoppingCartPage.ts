@@ -10,6 +10,8 @@ export default class ShoppingCartPage extends BasePage {
     await this.waitForElementVisible(locators.ADD_TO_CART_BUTTON);
     await this.clickElement(locators.ADD_TO_CART_BUTTON);
     await this.clickElement(locators.MINI_CART_BUTTON);
+  }
+  async isBookInCart(): Promise<void> {
     await this.waitForElementVisible(locators.BOOK_ADDED_TO_CART_IMAGE);
   }
 }
