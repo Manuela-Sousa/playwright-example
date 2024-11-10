@@ -1,4 +1,13 @@
-export const mockBookData = [
+interface Book {
+  bookId: number;
+  title: string;
+  author: string;
+  category: string;
+  price: number;
+  coverFileName: string;
+}
+
+export const mockBookData: Book[] = [
   {
     bookId: 5,
     title: "Harry Potter and the cats",
