@@ -10,14 +10,23 @@ export const mockApiRequest = async (
   endpoint: Endpoint,
   responseData: MockResponseData,
   statusCode: StatusCode,
-  contentType: ContentType 
+  contentType: ContentType
 ) => {
   await page.route(endpoint, async (route) => {
-    await route.fulfill({
-      body: JSON.stringify(responseData),
-      status: statusCode,
-      contentType: contentType,
-    });
-    expect(responseData).toEqual(responseData);
+    try {
+      await route.fulfill({
+        body: JSON.stringify(responseData),
+        status: statusCode,
+        contentType: contentType,
+      });
+      expect(responseData).toBeDefined();
+      expect(responseData).toEqual(responseData);
+    } catch (error) {
+      console.error(
+        `Failed to mock the API request for endpoint: ${endpoint}`,
+        error
+      );
+      throw error;
+    }
   });
 };
