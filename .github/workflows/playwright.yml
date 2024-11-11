@@ -34,8 +34,7 @@ jobs:
         with:
           publish_dir: playwright-report
           publish_branch: main
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          deploy_key: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Print GitHub Pages URL
         run: |
