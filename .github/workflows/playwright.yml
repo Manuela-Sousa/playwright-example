@@ -8,14 +8,9 @@ on:
 
 jobs:
   test:
-    timeout-minutes: 60
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-
-      - uses: actions/setup-node@v4
-        with:
-          node-version: lts/*
 
       - name: Install dependencies
         run: npm ci
@@ -27,14 +22,12 @@ jobs:
         run: |
           npx playwright test --reporter=html --output=playwright-report
 
-      - name: Deploy Playwright HTML Report to GitHub Pages
+      - name: Set up GitHub Pages deployment
         uses: peaceiris/actions-gh-pages@v3
         with:
-          publish_dir: playwright-report 
-          publish_branch: gh-pages 
+          publish_dir: playwright-report
+          publish_branch: gh-pages
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Notify URL of the report
-        run: |
           echo "The Playwright test report is available at: https://github.com/Manuela-Sousa/playwright-example/"
