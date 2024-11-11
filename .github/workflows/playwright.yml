@@ -22,15 +22,10 @@ jobs:
         run: |
           npx playwright test --reporter=html --output=playwright-report
 
-      - name: Check if GITHUB_TOKEN is set
-        run: echo $GITHUB_TOKEN
-
-      - name: Set up GitHub Pages deployment
+      - name: Deploy Playwright HTML Report to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
           publish_dir: playwright-report
           publish_branch: gh-pages
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-          echo "The Playwright test report is available at: https://github.com/Manuela-Sousa/playwright-example/"
+          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
