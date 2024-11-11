@@ -22,6 +22,9 @@ jobs:
         run: |
           npx playwright test --reporter=html --output=playwright-report
 
+      - name: Check if GITHUB_TOKEN is set
+        run: echo $GITHUB_TOKEN
+
       - name: Set up GitHub Pages deployment
         uses: peaceiris/actions-gh-pages@v3
         with:
