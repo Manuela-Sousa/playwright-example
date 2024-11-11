@@ -12,13 +12,17 @@ export const mockApiRequest = async (
   statusCode: StatusCode,
   contentType: ContentType
 ) => {
-  await page.route(endpoint, async (route) => {
-    await route.fulfill({
-      body: JSON.stringify(responseData),
-      status: statusCode,
-      contentType: contentType,
+  return page
+    .route(endpoint, async (route) => {
+      await route.fulfill({
+        body: JSON.stringify(responseData),
+        status: statusCode,
+        contentType: contentType,
+      });
+      expect(responseData).toBeDefined();
+      expect(responseData).toEqual(responseData);
+    })
+    .catch((error) => {
+      console.error("Error occurred while fulfilling the route:", error);
     });
-    expect(responseData).toBeDefined();
-    expect(responseData).toEqual(responseData);
-  });
 };
