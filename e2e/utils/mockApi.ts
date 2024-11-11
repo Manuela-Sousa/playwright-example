@@ -1,39 +1,24 @@
 import { expect, Page } from "@playwright/test";
 
-interface MockApiRequest<T> {
-  page: Page;
-  endpoint: string | RegExp;
-  responseData: T;
-  statusCode?: number;
-  contentType?: string;
-}
+type MockResponseData = Record<string, any>;
+type Endpoint = string | RegExp;
+type StatusCode = number;
+type ContentType = string;
 
-export const mockApiRequest = async ({
-  page,
-  endpoint,
-  responseData,
-  statusCode = 200,
-  contentType = "application/json",
-}: MockApiRequest<any>) => {
+export const mockApiRequest = async (
+  page: Page,
+  endpoint: Endpoint,
+  responseData: MockResponseData,
+  statusCode: StatusCode,
+  contentType: ContentType
+) => {
   await page.route(endpoint, async (route) => {
-    const query = {
+    await route.fulfill({
       body: JSON.stringify(responseData),
       status: statusCode,
-      contentType,
-    };
-
-    return await route
-      .fulfill(query)
-      .then((res: any) => {
-        expect(res).toBeDefined();
-        expect(res).toEqual(responseData);
-      })
-      .catch((error: Error) => {
-        console.error(
-          `Failed to mock the API request for endpoint: ${endpoint}`,
-          error
-        );
-        throw error;
-      });
+      contentType: contentType,
+    });
+    expect(responseData).toBeDefined();
+    expect(responseData).toEqual(responseData);
   });
 };
