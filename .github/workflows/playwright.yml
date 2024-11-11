@@ -40,3 +40,7 @@ jobs:
           name: playwright-report
           path: playwright-report/
           retention-days: 30
+
+      - name: Publish CTRF Test Summary Results
+        run: npx github-actions-ctrf path-to-your-ctrf-report.json
+        if: always()
