@@ -26,10 +26,7 @@ export default defineConfig({
   /* Opt out of parallel tests on CI. */
   workers: process.env.CI ? 1 : 2,
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
-  reporter: [
-    ["list"], // You can combine multiple reporters
-    ["playwright-ctrf-json-reporter", {}],
-  ],
+  reporter: "html", // You can combine multiple reporters
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
     baseURL: String(process.env.URL),
