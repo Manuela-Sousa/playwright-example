@@ -43,4 +43,4 @@ jobs:
 
       - name: Print GitHub Pages URL
         run: |
-          echo "Your Playwright Report is available at: https://Manuela-Sousa.github.io/your-repo-name/index.html"
+          echo "Your Playwright Report is available at: https://Manuela-Sousa.github.io/playwright-example/index.html"
