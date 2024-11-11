@@ -36,6 +36,11 @@ jobs:
           publish_branch: main
           deploy_key: ${{ secrets.GITHUB_TOKEN }}
 
+      - name: Set up SSH key
+        uses: webfactory/ssh-agent@v0.5.3
+        with:
+          ssh-private-key: ${{ secrets.ACTIONS_SSH_KEY }}
+
       - name: Print GitHub Pages URL
         run: |
           echo "Your Playwright Report is available at: https://Manuela-Sousa.github.io/your-repo-name/index.html"
