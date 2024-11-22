@@ -5,7 +5,8 @@ test.beforeEach(async ({ page }) => {
 });
 test("Should be able to add and view book in the cart", async ({
   shoppingCartPage,
+  listingProductPage,
 }) => {
-  await shoppingCartPage.addBookToShoppingCart();
+  await listingProductPage.addBookToShoppingCart();
   await shoppingCartPage.isBookInCart();
 });
