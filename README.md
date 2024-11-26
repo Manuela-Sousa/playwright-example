@@ -27,6 +27,8 @@ This repository follows a modular folder structure to organize test-related file
 
 - **`e2e/tests/specs/`**: Contains test specification files. Each file includes test cases that use the Page Object classes and locators defined in other directories.
 
+- **`fixtures.ts`**: The fixtures are used to set up reusable pieces of code that can be shared across multiple test cases. 
+
 ## Setting Up the Test Environment
 
 You can configure the test environment in the `playwright.config.ts` file. Specifically, in the following line:
