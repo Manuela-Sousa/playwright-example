@@ -11,4 +11,8 @@ export const locators = {
     "//html/body/app-root/div/app-shoppingcart/mat-card/mat-card/mat-card-header/div/mat-card-title",
   CONTINUE_SHOPPING_BUTTON:
     "//html/body/app-root/div/app-shoppingcart/mat-card/mat-card/mat-card-content/button/span[4]",
+  SEARCH_TEXTFIELD:
+    "//html/body/app-root/app-nav-bar/mat-toolbar/mat-toolbar-row/div[2]/app-search/form/input",
+  BOOK_RESULTS_TEXT: "//*[@id='mat-option-0']/span",
+  BOOK_RESULTS_TITLE_TEXT: "*[class^='card-title my-2']",
 };

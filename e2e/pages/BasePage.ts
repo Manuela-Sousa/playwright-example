@@ -31,4 +31,25 @@ export default class BasePage {
     await this.waitForElementVisible(locator);
     await locator.click();
   }
+  async sendKeys(selector: string | Locator, text: string): Promise<void> {
+    if (typeof selector === "string") {
+      await this.page.fill(selector, text);
+    } else {
+      await selector.fill(text);
+    }
+  }
+
+  async findSpecificElementByText(
+    selector: string,
+    text: string
+  ): Promise<Locator> {
+    const elements = await this.page.locator(selector).all();
+    for (const element of elements) {
+      const elementText = await element.innerText();
+      if (elementText.includes(text)) {
+        return element;
+      }
+    }
+    throw new Error(`Element with text "${text}" not found`);
+  }
 }
