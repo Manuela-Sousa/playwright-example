@@ -7,4 +7,8 @@ export const locators = {
     "//html/body/app-root/div/app-shoppingcart/mat-card/mat-card-content[1]/table/tbody/tr/td[2]/a",
   BOOK_TITLE_TEXT:
     "//html/body/app-root/div/app-home/div/div[2]/div/div[1]/app-book-card/mat-card/mat-card-content/div",
+  EMPTY_CART_TEXT:
+    "//html/body/app-root/div/app-shoppingcart/mat-card/mat-card/mat-card-header/div/mat-card-title",
+  CONTINUE_SHOPPING_BUTTON:
+    "//html/body/app-root/div/app-shoppingcart/mat-card/mat-card/mat-card-content/button/span[4]",
 };
