@@ -15,4 +15,16 @@ export const locators = {
     "//html/body/app-root/app-nav-bar/mat-toolbar/mat-toolbar-row/div[2]/app-search/form/input",
   BOOK_RESULTS_TEXT: "//*[@id='mat-option-0']/span",
   BOOK_RESULTS_TITLE_TEXT: "*[class^='card-title my-2']",
+  LOGIN_BUTTON:
+    "//html/body/app-root/app-nav-bar/mat-toolbar/mat-toolbar-row/div[3]/button[2]/span[2]",
+  LOGIN_FORM_BUTTON:
+    "//html/body/app-root/div/app-login/div/mat-card/mat-card-content/form/mat-card-actions/button",
+  USERNAME_ERROR_MESSAGE_TEXT:
+    "//html/body/app-root/div/app-login/div/mat-card/mat-card-content/form/mat-form-field[1]/div[2]",
+  PASSWORD_ERROR_MESSAGE_TEXT:
+    "//html/body/app-root/div/app-login/div/mat-card/mat-card-content/form/mat-form-field[2]/div[2]/div",
+  USERNAME_TEXTFIELD:
+    "//html/body/app-root/div/app-login/div/mat-card/mat-card-content/form/mat-form-field[1]/div[1]/div/div[2]",
+  PASSWORD_TEXTFIELD:
+    "//html/body/app-root/div/app-login/div/mat-card/mat-card-content/form/mat-form-field[2]/div[1]",
 };
