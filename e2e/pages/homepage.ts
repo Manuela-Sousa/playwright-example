@@ -2,7 +2,7 @@ import { Page } from "playwright-core";
 import { locators } from "../locators/locators";
 import BasePage from "./BasePage";
 
-export default class HomePage extends BasePage {
+export default class homePage extends BasePage {
   constructor(page: Page) {
     super(page);
   }
