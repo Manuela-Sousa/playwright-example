@@ -7,25 +7,23 @@ export default class LoginPage extends BasePage {
     super(page);
   }
 
+  async fillUsername(username: string): Promise<void> {
+    await this.fillField(locators.USERNAME_TEXTFIELD, username);
+  }
+
+  async fillPassword(password: string): Promise<void> {
+    await this.fillField(locators.PASSWORD_TEXTFIELD, password);
+  }
+
+  async submitLogin(): Promise<void> {
+    await this.clickElement(locators.LOGIN_FORM_BUTTON);
+  }
+
   async validateErrorLoginMessages(): Promise<void> {
-    await this.clickElement(locators.LOGIN_BUTTON);
-    await this.clickElement(locators.LOGIN_FORM_BUTTON);
-
-    await this.clickElement(locators.USERNAME_TEXTFIELD);
-
-    await this.clickElement(locators.PASSWORD_TEXTFIELD);
-    await this.clickElement(locators.LOGIN_FORM_BUTTON);
-
+    await this.submitLogin();
     await this.waitForElementVisible(locators.USERNAME_ERROR_MESSAGE_TEXT);
     await this.waitForElementVisible(locators.PASSWORD_ERROR_MESSAGE_TEXT);
-
-    await this.findSpecificElementByText(
-      locators.USERNAME_ERROR_MESSAGE_TEXT,
-      "Username is required"
-    );
-    await this.findSpecificElementByText(
-      locators.PASSWORD_ERROR_MESSAGE_TEXT,
-      "Password is required"
-    );
+    await this.findElementByText(locators.USERNAME_ERROR_MESSAGE_TEXT, "Username is required");
+    await this.findElementByText(locators.PASSWORD_ERROR_MESSAGE_TEXT, "Password is required");
   }
 }

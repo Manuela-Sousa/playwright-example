@@ -8,7 +8,7 @@ export default class BasePage {
     this.page = page;
   }
 
-  getLocator(selector: string | Locator): Locator {
+  protected getLocator(selector: string | Locator): Locator {
     return typeof selector === "string" ? this.page.locator(selector) : selector;
   }
 
@@ -26,11 +26,14 @@ export default class BasePage {
     await this.waitForElementVisible(locator);
     await locator.click();
   }
-  async sendKeys(selector: string | Locator, text: string): Promise<void> {
-    await this.getLocator(selector).fill(text);
+
+  async fillField(selector: string | Locator, text: string): Promise<void> {
+    const locator = this.getLocator(selector);
+    await locator.fill(text);
   }
 
-  async findSpecificElementByText(
+
+  async findElementByText(
     selector: string,
     text: string
   ): Promise<Locator> {
@@ -41,6 +44,6 @@ export default class BasePage {
         return element;
       }
     }
-    throw new Error(`Element with text "${text}" not found`);
+    throw new Error(`Element with selector "${selector}" and text "${text}" not found.`);
   }
 }
