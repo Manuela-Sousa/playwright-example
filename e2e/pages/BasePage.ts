@@ -2,27 +2,22 @@ import { Locator, Page } from "playwright-core";
 import { expect } from "@playwright/test";
 
 export default class BasePage {
-  page: Page;
+  readonly page: Page;
 
   constructor(page: Page) {
     this.page = page;
   }
 
   getLocator(selector: string | Locator): Locator {
-    if (typeof selector === "string") {
-      return this.page.locator(selector);
-    }
-    return selector;
+    return typeof selector === "string" ? this.page.locator(selector) : selector;
   }
 
   async waitForElementVisible(
     selector: string | Locator,
-    timeout: number = 5000
+    timeout = 5000
   ): Promise<void> {
     const locator = this.getLocator(selector);
-
     await locator.waitFor({ state: "visible", timeout });
-
     await expect(locator).toBeVisible({ timeout });
   }
 
@@ -32,11 +27,7 @@ export default class BasePage {
     await locator.click();
   }
   async sendKeys(selector: string | Locator, text: string): Promise<void> {
-    if (typeof selector === "string") {
-      await this.page.fill(selector, text);
-    } else {
-      await selector.fill(text);
-    }
+    await this.getLocator(selector).fill(text);
   }
 
   async findSpecificElementByText(
