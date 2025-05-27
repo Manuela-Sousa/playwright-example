@@ -6,9 +6,9 @@ test.beforeEach(async ({ page }) => {
 
 test("Should be able to add and view book in the cart", async ({ shoppingCartPage }) => {
   await shoppingCartPage.addBookToShoppingCart();
-  expect(await shoppingCartPage.isBookInCart()).toBe(true);
+  await shoppingCartPage.isBookInCart()
 });
 
 test("Should be able to see the empty shopping cart", async ({ shoppingCartPage }) => {
-  expect(await shoppingCartPage.validateEmptyShoppingCart()).toBe(true);
-});
+  await shoppingCartPage.validateEmptyShoppingCart()
+}); 

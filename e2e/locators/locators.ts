@@ -18,13 +18,13 @@ export const locators = {
   LOGIN_BUTTON:
     "//html/body/app-root/app-nav-bar/mat-toolbar/mat-toolbar-row/div[3]/button[2]/span[2]",
   LOGIN_FORM_BUTTON:
-    "//html/body/app-root/div/app-login/div/mat-card/mat-card-content/form/mat-card-actions/button",
+    "body > app-root > app-nav-bar > mat-toolbar > mat-toolbar-row > div.d-flex.align-items-center > button.mat-mdc-tooltip-trigger.mdc-button.mdc-button--unelevated.mat-mdc-unelevated-button.mat-primary.mat-mdc-button-base.ng-star-inserted > span.mdc-button__label",
   USERNAME_ERROR_MESSAGE_TEXT:
     "//html/body/app-root/div/app-login/div/mat-card/mat-card-content/form/mat-form-field[1]/div[2]",
   PASSWORD_ERROR_MESSAGE_TEXT:
     "//html/body/app-root/div/app-login/div/mat-card/mat-card-content/form/mat-form-field[2]/div[2]/div",
   USERNAME_TEXTFIELD:
-    "//html/body/app-root/div/app-login/div/mat-card/mat-card-content/form/mat-form-field[1]/div[1]/div/div[2]",
+    "//*[@id='mat-input-0']",
   PASSWORD_TEXTFIELD:
-    "//html/body/app-root/div/app-login/div/mat-card/mat-card-content/form/mat-form-field[2]/div[1]",
+    "//*[@id='mat-input-1']",
 };

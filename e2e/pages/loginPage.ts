@@ -21,9 +21,15 @@ export default class LoginPage extends BasePage {
 
   async validateErrorLoginMessages(): Promise<void> {
     await this.submitLogin();
+
+    await this.waitForElementVisible(locators.USERNAME_TEXTFIELD);
+    await this.fillField(locators.USERNAME_TEXTFIELD, '');
+    await this.fillField(locators.PASSWORD_TEXTFIELD, '');
     await this.waitForElementVisible(locators.USERNAME_ERROR_MESSAGE_TEXT);
-    await this.waitForElementVisible(locators.PASSWORD_ERROR_MESSAGE_TEXT);
+
     await this.findElementByText(locators.USERNAME_ERROR_MESSAGE_TEXT, "Username is required");
+    await this.fillField(locators.USERNAME_TEXTFIELD, '');
+    await this.waitForElementVisible(locators.PASSWORD_ERROR_MESSAGE_TEXT);
     await this.findElementByText(locators.PASSWORD_ERROR_MESSAGE_TEXT, "Password is required");
   }
 }
