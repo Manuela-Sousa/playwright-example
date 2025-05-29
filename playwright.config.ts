@@ -29,7 +29,7 @@ export default defineConfig({
   reporter: "html", // You can combine multiple reporters
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
-    baseURL: String(process.env.URL),
+    baseURL: String(process.env.BASE_URL),
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     headless: true,
     trace: "on-first-retry",
